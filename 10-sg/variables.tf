@@ -27,3 +27,16 @@ variable "vpc_id" {
   type        = string
   default = "value"
 } */
+
+
+variable "bastion_sg_name" {
+  description = "Name of the bastion security group"
+  type        = string
+  default = "bastion"
+}
+
+variable "bastion_sg_description" {
+  description = "Description of the bastion security group"
+  type        = string
+  default = "Security group for bastion instances"
+}

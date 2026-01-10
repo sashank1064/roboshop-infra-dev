@@ -40,3 +40,27 @@ variable "bastion_sg_description" {
   type        = string
   default = "Security group for bastion instances"
 }
+
+variable "mongodb_ports_vpn" {
+  description = "Ports for MongoDB access from VPN"
+  type        = list(number)
+  default     = [22, 27017]
+}
+
+variable "redis_ports_vpn" {
+  description = "Ports for Redis access from VPN"
+  type        = list(number)
+  default     = [22, 6379]
+}
+
+variable "mysql_ports_vpn" {
+  description = "Ports for MySQL access from VPN"
+  type        = list(number)
+  default     = [22, 3306]
+}
+
+variable "rabbitmq_ports_vpn" {
+  description = "Ports for RabbitMQ access from VPN"
+  type        = list(number)
+  default     = [22, 5672]
+}

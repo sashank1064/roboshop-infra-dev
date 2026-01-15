@@ -96,7 +96,7 @@ resource "aws_launch_template" "catalogue" {
   instance_initiated_shutdown_behavior = "terminate"
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.catalogue_sg_id]
-  update_default_version = true # each tike we update the launch template, it will create new version and make it default
+  update_default_version = true # each time we update the launch template, it will create new version and make it default
   tag_specifications {
     resource_type = "instance"
 # EC2 tags created by ASG
@@ -175,7 +175,6 @@ resource "aws_autoscaling_policy" "catalogue" {
   name                   = "${var.project}-${var.environment}-catalogue"
   autoscaling_group_name = aws_autoscaling_group.catalogue.name
   policy_type            = "TargetTrackingScaling"
-  cooldown = 120
   target_tracking_configuration {
     predefined_metric_specification {
       predefined_metric_type = "ASGAverageCPUUtilization"
@@ -186,7 +185,7 @@ resource "aws_autoscaling_policy" "catalogue" {
 }
 
 resource "aws_lb_listener_rule" "catalogue" {
-  listener_arn = local.backend_alb_llistener_arn
+  listener_arn = local.backend_alb_listener_arn
   priority     = 10
 
   action {

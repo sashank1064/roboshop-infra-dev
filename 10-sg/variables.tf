@@ -41,7 +41,7 @@ variable "bastion_sg_description" {
   default = "Security group for bastion instances"
 }
 
-variable "mongodb_ports_vpn" {
+variable "mongodb_ports_vpn" {  #just keep it as mongodb_ports, as bastion also need the same ports
   description = "Ports for MongoDB access from VPN"
   type        = list(number)
   default     = [22, 27017]

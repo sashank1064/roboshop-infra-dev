@@ -1,7 +1,7 @@
 variable "components" {
   default = {
     catalogue = {
-        rule_priority = 10
+        rule_priority = 15
     }
     user = {
         rule_priority = 20
@@ -16,7 +16,7 @@ variable "components" {
         rule_priority = 50
     }
     frontend = {
-        rule_priority = 10
+        rule_priority = 10   # (frontend rule is on a different listener, so 10 is ok here)
     }
 
   }

@@ -12,9 +12,9 @@ variable "components" {
     shipping = {
         rule_priority = 40
     }
-    payment = {
-        rule_priority = 50
-    }
+    # payment = {
+    #     rule_priority = 50
+    # }
     frontend = {
         rule_priority = 10   # (frontend rule is on a different listener, so 10 is ok here)
     }

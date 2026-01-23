@@ -133,14 +133,14 @@ resource "aws_autoscaling_group" "payment" {
   max_size                  = 10
   min_size                  = 1
   desired_capacity          = 1
-  vpc_zone_identifier       = [local.private_subnet_id]
+  vpc_zone_identifier       = local.private_subnet_id
   target_group_arns         = [aws_lb_target_group.payment.arn]
   health_check_type         = "ELB"
   health_check_grace_period = 90
   
   launch_template {
     id      = aws_launch_template.payment.id
-    version = "aws_launch_template.payment.latest_version"
+    version = aws_launch_template.payment.latest_version
   }
 
   dynamic "tag" {
@@ -158,7 +158,7 @@ resource "aws_autoscaling_group" "payment" {
   }
 
   instance_refresh {
-    strategy = "rolling"
+    strategy = "Rolling"
     preferences {
       min_healthy_percentage = 50
     }
